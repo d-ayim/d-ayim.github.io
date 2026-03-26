@@ -29,7 +29,6 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -40,7 +39,6 @@
     overflow-x: hidden;
   }
 
-  /* ── GRID BG ── */
   body::before {
     content: '';
     position: fixed; inset: 0; z-index: 0;
@@ -51,7 +49,7 @@
     pointer-events: none;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -60,41 +58,29 @@
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
-
   .nav-logo {
     font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.15rem;
-    color: var(--accent2);
-    letter-spacing: 0.04em;
+    font-weight: 800; font-size: 1.15rem;
+    color: var(--accent2); letter-spacing: 0.04em;
   }
-
   .nav-logo span { color: var(--gold); }
-
   .nav-links { display: flex; gap: 32px; }
-
   .nav-links a {
     font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--text2);
-    text-decoration: none;
-    letter-spacing: 0.06em;
+    font-size: 0.78rem; color: var(--text2);
+    text-decoration: none; letter-spacing: 0.06em;
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--accent2); }
-
   .nav-badge {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--gold);
+    font-size: 0.7rem; color: var(--gold);
     border: 1px solid rgba(245,158,11,0.3);
-    padding: 4px 12px;
-    border-radius: 20px;
+    padding: 4px 12px; border-radius: 20px;
     letter-spacing: 0.08em;
   }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
     position: relative; z-index: 1;
     min-height: 100vh;
@@ -102,627 +88,364 @@
     padding: 120px 48px 80px;
     max-width: 1280px; margin: 0 auto;
   }
-
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase;
     margin-bottom: 24px;
     display: flex; align-items: center; gap: 12px;
   }
-
   .hero-eyebrow::before {
-    content: '';
-    display: block; width: 32px; height: 1px;
-    background: var(--accent);
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--accent);
   }
-
   .hero h1 {
     font-family: 'Syne', sans-serif;
     font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    font-weight: 800; line-height: 1.0;
+    letter-spacing: -0.02em; margin-bottom: 8px;
   }
-
   .hero h1 .name { color: #fff; }
   .hero h1 .lastname {
     color: transparent;
     -webkit-text-stroke: 2px var(--accent2);
   }
-
-  .hero-sub {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    font-weight: 600;
-    color: var(--gold);
-    margin: 18px 0 28px;
-    letter-spacing: 0.02em;
-  }
-
   .hero-desc {
-    font-size: 1.05rem;
-    color: var(--text2);
-    max-width: 560px;
-    line-height: 1.75;
-    margin-bottom: 40px;
+    font-size: 1.05rem; color: var(--text2);
+    max-width: 560px; line-height: 1.75;
+    margin-bottom: 40px; margin-top: 24px;
   }
-
   .hero-tags {
     display: flex; flex-wrap: wrap; gap: 10px;
     margin-bottom: 48px;
   }
-
   .tag {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    padding: 6px 14px;
-    border-radius: 4px;
-    letter-spacing: 0.06em;
-    border: 1px solid;
+    font-size: 0.72rem; padding: 6px 14px;
+    border-radius: 4px; letter-spacing: 0.06em; border: 1px solid;
   }
-
-  .tag-blue { color: var(--accent2); border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.07); }
-  .tag-gold { color: var(--gold); border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.07); }
-  .tag-green { color: var(--green); border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.07); }
-  .tag-purple { color: var(--purple); border-color: rgba(139,92,246,0.35); background: rgba(139,92,246,0.07); }
-
-  .hero-cta {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
-
+  .tag-blue  { color: var(--accent2); border-color: rgba(59,130,246,0.35);  background: rgba(59,130,246,0.07);  }
+  .tag-gold  { color: var(--gold);    border-color: rgba(245,158,11,0.35);  background: rgba(245,158,11,0.07);  }
+  .tag-green { color: var(--green);   border-color: rgba(16,185,129,0.35);  background: rgba(16,185,129,0.07);  }
+  .tag-purple{ color: var(--purple);  border-color: rgba(139,92,246,0.35);  background: rgba(139,92,246,0.07);  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn-primary {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    letter-spacing: 0.04em;
-    padding: 14px 28px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-block;
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 0.88rem; letter-spacing: 0.04em;
+    padding: 14px 28px; background: var(--accent);
+    color: #fff; border: none; border-radius: 6px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s; display: inline-block;
   }
-
   .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
-
   .btn-ghost {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.88rem;
-    letter-spacing: 0.04em;
-    padding: 14px 28px;
-    background: transparent;
-    color: var(--text2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-    display: inline-block;
+    font-family: 'Syne', sans-serif; font-weight: 600;
+    font-size: 0.88rem; letter-spacing: 0.04em;
+    padding: 14px 28px; background: transparent;
+    color: var(--text2); border: 1px solid var(--border);
+    border-radius: 6px; cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s; display: inline-block;
   }
-
   .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
-
   .hero-scroll {
     position: absolute; bottom: 40px; left: 50%;
     transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+    color: var(--text3); font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.1em;
     animation: bounce 2s ease-in-out infinite;
   }
-
   @keyframes bounce {
     0%,100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
+    50%      { transform: translateX(-50%) translateY(8px); }
   }
-
   .scroll-line {
     width: 1px; height: 40px;
     background: linear-gradient(to bottom, var(--accent), transparent);
   }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section {
     position: relative; z-index: 1;
     padding: 100px 48px;
     max-width: 1280px; margin: 0 auto;
   }
-
   .section-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
+    font-size: 0.72rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
     margin-bottom: 16px;
     display: flex; align-items: center; gap: 12px;
   }
-
   .section-label::after {
-    content: '';
-    flex: 1; height: 1px;
+    content: ''; flex: 1; height: 1px;
     background: linear-gradient(to right, var(--border), transparent);
   }
-
   .section-title {
     font-family: 'Syne', sans-serif;
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-    color: #fff;
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 16px; color: #fff;
   }
-
   .section-sub {
-    font-size: 1rem;
-    color: var(--text2);
-    max-width: 600px;
-    margin-bottom: 60px;
+    font-size: 1rem; color: var(--text2);
+    max-width: 600px; margin-bottom: 60px;
   }
 
-  /* ── DIVIDER ── */
+  /* DIVIDER */
   .divider {
     position: relative; z-index: 1;
     width: 100%; height: 1px;
     background: linear-gradient(to right, transparent, var(--border), transparent);
   }
 
-  /* ── ABOUT GRID ── */
+  /* ABOUT */
   .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
   }
-
   .about-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 32px;
     transition: border-color 0.25s, box-shadow 0.25s;
   }
-
-  .about-card:hover {
-    border-color: rgba(59,130,246,0.4);
-    box-shadow: var(--glow);
-  }
-
-  .about-card-icon {
-    font-size: 1.8rem;
-    margin-bottom: 16px;
-  }
-
+  .about-card:hover { border-color: rgba(59,130,246,0.4); box-shadow: var(--glow); }
+  .about-card-icon { font-size: 1.8rem; margin-bottom: 16px; }
   .about-card h3 {
     font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff;
+    font-size: 1.05rem; font-weight: 700;
+    margin-bottom: 10px; color: #fff;
   }
+  .about-card p { font-size: 0.9rem; color: var(--text2); line-height: 1.75; }
 
-  .about-card p {
-    font-size: 0.9rem;
-    color: var(--text2);
-    line-height: 1.75;
-  }
-
-  /* ── STAGES ── */
+  /* STAGES */
   .stages-timeline {
-    display: flex; flex-direction: column; gap: 0;
-    position: relative;
+    display: flex; flex-direction: column; gap: 0; position: relative;
   }
-
   .stages-timeline::before {
-    content: '';
-    position: absolute;
+    content: ''; position: absolute;
     left: 28px; top: 0; bottom: 0; width: 2px;
     background: linear-gradient(to bottom, var(--accent), var(--purple), transparent);
   }
-
   .stage-item {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 0 32px;
-    padding-bottom: 56px;
-    position: relative;
+    display: grid; grid-template-columns: 60px 1fr;
+    gap: 0 32px; padding-bottom: 56px; position: relative;
   }
-
   .stage-dot {
-    width: 58px; height: 58px;
-    border-radius: 12px;
-    background: var(--surface);
-    border: 2px solid var(--accent);
+    width: 58px; height: 58px; border-radius: 12px;
+    background: var(--surface); border: 2px solid var(--accent);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
-    position: relative; z-index: 2;
-    flex-shrink: 0;
+    font-size: 1.4rem; position: relative; z-index: 2; flex-shrink: 0;
     box-shadow: 0 0 20px rgba(59,130,246,0.2);
   }
-
   .stage-dot.purple { border-color: var(--purple); box-shadow: 0 0 20px rgba(139,92,246,0.2); }
-
   .stage-content {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 32px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px;
     transition: border-color 0.25s;
   }
-
   .stage-content:hover { border-color: rgba(59,130,246,0.4); }
-
   .stage-meta {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
   }
-
   .stage-period {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.06em;
+    font-size: 0.72rem; color: var(--accent); letter-spacing: 0.06em;
   }
-
   .stage-org {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--text3);
+    font-size: 0.72rem; color: var(--text3);
   }
-
   .stage-content h3 {
     font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 8px;
+    font-size: 1.2rem; font-weight: 700;
+    color: #fff; margin-bottom: 8px;
   }
-
   .stage-content p {
-    font-size: 0.9rem;
-    color: var(--text2);
-    margin-bottom: 20px;
-    line-height: 1.7;
+    font-size: 0.9rem; color: var(--text2);
+    margin-bottom: 20px; line-height: 1.7;
   }
-
-  .task-list {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-
+  .task-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .task-chip {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    padding: 5px 12px;
-    border-radius: 4px;
-    letter-spacing: 0.04em;
+    font-size: 0.7rem; padding: 5px 12px;
+    border-radius: 4px; letter-spacing: 0.04em;
     display: flex; align-items: center; gap: 6px;
   }
-
   .task-chip::before { content: '▸'; opacity: 0.6; }
+  .chip-blue   { background: rgba(59,130,246,0.1);  color: var(--accent2); border: 1px solid rgba(59,130,246,0.2);  }
+  .chip-purple { background: rgba(139,92,246,0.1);  color: #a78bfa;        border: 1px solid rgba(139,92,246,0.2);  }
 
-  .chip-blue { background: rgba(59,130,246,0.1); color: var(--accent2); border: 1px solid rgba(59,130,246,0.2); }
-  .chip-purple { background: rgba(139,92,246,0.1); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); }
-
-  /* ── PROJETS ── */
+  /* PROJETS */
   .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
   }
-
   .project-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-    cursor: pointer;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: pointer;
   }
-
   .project-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(59,130,246,0.5);
+    transform: translateY(-6px); border-color: rgba(59,130,246,0.5);
     box-shadow: 0 20px 60px rgba(0,0,0,0.4), var(--glow);
   }
-
   .project-header {
-    padding: 28px 28px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: flex-start; justify-content: space-between;
-    gap: 12px;
+    padding: 28px 28px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
   }
-
-  .project-icon {
-    font-size: 2rem;
-    line-height: 1;
-  }
-
+  .project-icon { font-size: 2rem; line-height: 1; }
   .project-status {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border-radius: 20px;
-    background: rgba(16,185,129,0.12);
-    color: var(--green);
+    font-size: 0.65rem; letter-spacing: 0.08em;
+    padding: 4px 10px; border-radius: 20px;
+    background: rgba(16,185,129,0.12); color: var(--green);
     border: 1px solid rgba(16,185,129,0.25);
   }
-
   .project-body { padding: 24px 28px 28px; }
-
   .project-body h3 {
     font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 8px;
+    font-size: 1.05rem; font-weight: 700;
+    color: #fff; margin-bottom: 8px;
   }
-
   .project-body p {
-    font-size: 0.87rem;
-    color: var(--text2);
-    line-height: 1.7;
-    margin-bottom: 20px;
+    font-size: 0.87rem; color: var(--text2);
+    line-height: 1.7; margin-bottom: 20px;
   }
-
-  .project-tech {
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
-
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
   .tech-pill {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    padding: 3px 10px;
-    border-radius: 3px;
-    background: var(--surface);
-    color: var(--text3);
-    border: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.65rem; padding: 3px 10px;
+    border-radius: 3px; background: var(--surface);
+    color: var(--text3); border: 1px solid rgba(255,255,255,0.06);
   }
 
-  /* ── COMPÉTENCES ── */
+  /* COMPÉTENCES */
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 32px;
   }
-
   .skill-group {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px;
   }
-
   .skill-group h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--accent2);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
+    font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+    color: var(--accent2); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
   }
-
-  .skill-bar {
-    margin-bottom: 16px;
-  }
-
+  .skill-bar { margin-bottom: 16px; }
   .skill-bar-top {
     display: flex; justify-content: space-between;
-    margin-bottom: 6px;
-    font-size: 0.85rem;
-    color: var(--text);
+    margin-bottom: 6px; font-size: 0.85rem; color: var(--text);
   }
-
   .skill-bar-top span:last-child {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--text3);
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text3);
   }
-
   .skill-track {
-    height: 4px;
-    background: var(--surface);
-    border-radius: 4px;
-    overflow: hidden;
+    height: 4px; background: var(--surface); border-radius: 4px; overflow: hidden;
   }
-
   .skill-fill {
-    height: 100%;
-    border-radius: 4px;
+    height: 100%; border-radius: 4px;
     background: linear-gradient(to right, var(--accent), var(--accent2));
-    animation: fillBar 1.2s ease-out forwards;
-    transform-origin: left;
   }
-
-  @keyframes fillBar {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-  }
-
-  .skill-fill.gold { background: linear-gradient(to right, var(--gold), var(--gold2)); }
-  .skill-fill.green { background: linear-gradient(to right, #059669, var(--green)); }
+  .skill-fill.gold   { background: linear-gradient(to right, var(--gold), var(--gold2)); }
+  .skill-fill.green  { background: linear-gradient(to right, #059669, var(--green)); }
   .skill-fill.purple { background: linear-gradient(to right, #7c3aed, var(--purple)); }
 
-  /* ── E5 BLOC ── */
+  /* E5 */
   .e5-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
   }
-
   .e5-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; text-align: center;
     transition: border-color 0.25s, box-shadow 0.25s;
   }
-
   .e5-card:hover {
     border-color: rgba(245,158,11,0.4);
     box-shadow: 0 0 30px rgba(245,158,11,0.08);
   }
-
   .e5-num {
     font-family: 'Syne', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 800;
-    color: var(--gold);
-    display: block;
-    line-height: 1;
-    margin-bottom: 6px;
+    font-size: 2.4rem; font-weight: 800;
+    color: var(--gold); display: block; line-height: 1; margin-bottom: 6px;
   }
+  .e5-label { font-size: 0.83rem; color: var(--text2); }
 
-  .e5-label {
-    font-size: 0.83rem;
-    color: var(--text2);
-  }
-
-  /* ── CONTACT ── */
+  /* CONTACT */
   .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
   }
-
   .contact-info h2 {
     font-family: 'Syne', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 16px;
+    font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 16px;
   }
-
-  .contact-info p {
-    color: var(--text2);
-    line-height: 1.75;
-    margin-bottom: 32px;
-  }
-
-  .contact-links {
-    display: flex; flex-direction: column; gap: 14px;
-  }
-
+  .contact-info p { color: var(--text2); line-height: 1.75; margin-bottom: 32px; }
+  .contact-links { display: flex; flex-direction: column; gap: 14px; }
   .contact-link {
     display: flex; align-items: center; gap: 14px;
-    padding: 14px 18px;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.9rem;
+    padding: 14px 18px; background: var(--bg2);
+    border: 1px solid var(--border); border-radius: 8px;
+    text-decoration: none; color: var(--text); font-size: 0.9rem;
     transition: border-color 0.2s, color 0.2s;
   }
-
   .contact-link:hover { border-color: var(--accent2); color: var(--accent2); }
-
   .contact-link-icon { font-size: 1.1rem; }
-
   .epreuve-box {
     background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.06));
     border: 1px solid rgba(59,130,246,0.25);
-    border-radius: 14px;
-    padding: 36px;
+    border-radius: 14px; padding: 36px;
   }
-
   .epreuve-box h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    color: var(--accent2);
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    color: var(--accent2); font-size: 1.1rem;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
   }
-
-  .epreuve-box ul {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 12px;
-  }
-
+  .epreuve-box ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
   .epreuve-box li {
     display: flex; align-items: flex-start; gap: 10px;
-    font-size: 0.88rem;
-    color: var(--text2);
-    line-height: 1.6;
+    font-size: 0.88rem; color: var(--text2); line-height: 1.6;
   }
-
   .epreuve-box li::before {
-    content: '✓';
-    color: var(--green);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
+    content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px;
   }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer {
     position: relative; z-index: 1;
     border-top: 1px solid var(--border);
     padding: 32px 48px;
     display: flex; align-items: center; justify-content: space-between;
   }
-
   footer .footer-left {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--text3);
-    letter-spacing: 0.06em;
+    font-size: 0.72rem; color: var(--text3); letter-spacing: 0.06em;
   }
-
   footer .footer-right {
     font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent);
+    font-size: 0.8rem; font-weight: 600; color: var(--accent);
   }
 
-  /* ── ANIMATIONS ── */
+  /* ANIMATIONS */
   .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
+    opacity: 0; transform: translateY(24px);
     transition: opacity 0.65s ease, transform 0.65s ease;
   }
+  .fade-in.visible { opacity: 1; transform: none; }
 
-  .fade-in.visible {
-    opacity: 1;
-    transform: none;
+  .stripe {
+    display: inline;
+    background: linear-gradient(120deg, rgba(59,130,246,0.18), rgba(59,130,246,0.05));
+    border-radius: 3px; padding: 0 4px;
   }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
     section { padding: 70px 24px; }
     .hero { padding: 100px 24px 70px; }
-    .about-grid,
-    .projects-grid,
-    .skills-grid,
-    .e5-grid,
-    .contact-wrapper { grid-template-columns: 1fr; }
+    .about-grid, .projects-grid, .skills-grid,
+    .e5-grid, .contact-wrapper { grid-template-columns: 1fr; }
     .stage-item { grid-template-columns: 44px 1fr; }
-  }
-
-  /* ── HIGHLIGHT STRIPE ── */
-  .stripe {
-    display: inline;
-    background: linear-gradient(120deg, rgba(59,130,246,0.18), rgba(59,130,246,0.05));
-    border-radius: 3px;
-    padding: 0 4px;
   }
 </style>
 </head>
@@ -749,12 +472,11 @@
     <span class="name">David</span><br>
     <span class="lastname">AYIM</span>
   </h1>
-
   <p class="hero-desc">
     Étudiant en BTS SIO 2ème année, spécialisation <strong>SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux). Deux ans de formation, deux stages en entreprise, des projets concrets — voici mon parcours.
   </p>
   <div class="hero-tags">
-    <span class="tag tag-blue">Réseaux & Administration</span>
+    <span class="tag tag-blue">Réseaux &amp; Administration</span>
     <span class="tag tag-gold">Windows Server 2022</span>
     <span class="tag tag-green">Support utilisateurs</span>
     <span class="tag tag-purple">Sécurité informatique</span>
@@ -765,7 +487,6 @@
     <a href="#projets" class="btn-primary">Voir mes réalisations</a>
     <a href="#stages" class="btn-ghost">Mes expériences</a>
   </div>
-
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     SCROLL
@@ -779,7 +500,6 @@
   <div class="section-label">01 — Profil</div>
   <h2 class="section-title">Qui suis-je ?</h2>
   <p class="section-sub">Passionné par les infrastructures réseau et les systèmes d'information, je prépare mon BTS SIO option SISR avec pour objectif d'évoluer dans les métiers de l'administration système et réseau.</p>
-
   <div class="about-grid">
     <div class="about-card fade-in">
       <div class="about-card-icon">🎓</div>
@@ -799,7 +519,7 @@
     <div class="about-card fade-in">
       <div class="about-card-icon">🎯</div>
       <h3>Objectif professionnel</h3>
-      <p>Intégrer un poste de technicien systèmes & réseaux ou administrateur infrastructure, avec une évolution vers l'ingénierie réseau ou la cybersécurité.</p>
+      <p>Intégrer un poste de technicien systèmes &amp; réseaux ou administrateur infrastructure, avec une évolution vers l'ingénierie réseau ou la cybersécurité.</p>
     </div>
   </div>
 </section>
@@ -811,10 +531,8 @@
   <div class="section-label">02 — Expériences</div>
   <h2 class="section-title">Stages en entreprise</h2>
   <p class="section-sub">Deux immersions professionnelles qui m'ont permis de mettre en pratique mes compétences dans des environnements réels et variés.</p>
-
   <div class="stages-timeline">
 
-    <!-- Stage 1 -->
     <div class="stage-item fade-in">
       <div class="stage-dot">🏫</div>
       <div class="stage-content">
@@ -826,7 +544,7 @@
         <p>Participation active à la reconfiguration réseau de plusieurs salles informatiques au sein de l'établissement. Intervention sur l'infrastructure physique et logique du réseau local scolaire.</p>
         <div class="task-list">
           <span class="task-chip chip-blue">Reconfiguration réseau</span>
-          <span class="task-chip chip-blue">Câblage & brassage</span>
+          <span class="task-chip chip-blue">Câblage &amp; brassage</span>
           <span class="task-chip chip-blue">Configuration switchs</span>
           <span class="task-chip chip-blue">Adressage IP</span>
           <span class="task-chip chip-blue">Documentation réseau</span>
@@ -835,7 +553,6 @@
       </div>
     </div>
 
-    <!-- Stage 2 -->
     <div class="stage-item fade-in">
       <div class="stage-dot purple">🏛️</div>
       <div class="stage-content">
@@ -843,13 +560,13 @@
           <span class="stage-period">STAGE 2 · 2026</span>
           <span class="stage-org">Mairie de Champs-sur-Marne (77)</span>
         </div>
-        <h3>Technicien SI — Administration & Support</h3>
+        <h3>Technicien SI — Administration &amp; Support</h3>
         <p>Mission polyvalente au sein du service informatique municipal. Gestion du quotidien technique, déploiement d'équipements et administration de l'infrastructure réseau de la collectivité.</p>
         <div class="task-list">
           <span class="task-chip chip-purple">Configuration équipements réseau</span>
           <span class="task-chip chip-purple">Support utilisateurs</span>
           <span class="task-chip chip-purple">Gestion de tickets (GLPI)</span>
-          <span class="task-chip chip-purple">Déploiement postes & équipements</span>
+          <span class="task-chip chip-purple">Déploiement postes &amp; équipements</span>
           <span class="task-chip chip-purple">Résolution de pannes</span>
           <span class="task-chip chip-purple">Administration serveurs</span>
           <span class="task-chip chip-purple">Maintenance préventive</span>
@@ -868,7 +585,6 @@
   <div class="section-label">03 — Réalisations</div>
   <h2 class="section-title">Projets BTS SIO</h2>
   <p class="section-sub">Trois projets phares réalisés durant ma formation, couvrant l'administration système, l'affichage dynamique et la sécurité réseau.</p>
-
   <div class="projects-grid">
 
     <div class="project-card fade-in">
@@ -923,7 +639,7 @@
           <span class="tech-pill">VPN IPSec / SSL</span>
           <span class="tech-pill">IPS / IDS</span>
           <span class="tech-pill">NAT / PAT</span>
-          <span class="tech-pill">Logs & supervision</span>
+          <span class="tech-pill">Logs &amp; supervision</span>
         </div>
       </div>
     </div>
@@ -938,8 +654,8 @@
   <div class="section-label">04 — Compétences</div>
   <h2 class="section-title">Niveaux de maîtrise</h2>
   <p class="section-sub">Compétences acquises lors de ma formation et de mes stages, évaluées en contexte professionnel réel.</p>
-
   <div class="skills-grid">
+
     <div class="skill-group fade-in">
       <h3>🌐 Réseaux</h3>
       <div class="skill-bar">
@@ -955,7 +671,7 @@
         <div class="skill-track"><div class="skill-fill" style="width:68%"></div></div>
       </div>
       <div class="skill-bar">
-        <div class="skill-bar-top"><span>WiFi & câblage structuré</span><span>Avancé</span></div>
+        <div class="skill-bar-top"><span>WiFi &amp; câblage structuré</span><span>Avancé</span></div>
         <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
       </div>
     </div>
@@ -967,7 +683,7 @@
         <div class="skill-track"><div class="skill-fill gold" style="width:82%"></div></div>
       </div>
       <div class="skill-bar">
-        <div class="skill-bar-top"><span>Active Directory & GPO</span><span>Avancé</span></div>
+        <div class="skill-bar-top"><span>Active Directory &amp; GPO</span><span>Avancé</span></div>
         <div class="skill-track"><div class="skill-fill gold" style="width:80%"></div></div>
       </div>
       <div class="skill-bar">
@@ -995,13 +711,13 @@
         <div class="skill-track"><div class="skill-fill purple" style="width:55%"></div></div>
       </div>
       <div class="skill-bar">
-        <div class="skill-bar-top"><span>Supervision & logs</span><span>Intermédiaire</span></div>
+        <div class="skill-bar-top"><span>Supervision &amp; logs</span><span>Intermédiaire</span></div>
         <div class="skill-track"><div class="skill-fill purple" style="width:65%"></div></div>
       </div>
     </div>
 
     <div class="skill-group fade-in">
-      <h3>🛠️ Support & outils</h3>
+      <h3>🛠️ Support &amp; outils</h3>
       <div class="skill-bar">
         <div class="skill-bar-top"><span>Support utilisateurs N1/N2</span><span>Avancé</span></div>
         <div class="skill-track"><div class="skill-fill green" style="width:88%"></div></div>
@@ -1019,6 +735,7 @@
         <div class="skill-track"><div class="skill-fill green" style="width:65%"></div></div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1029,7 +746,6 @@
   <div class="section-label">05 — Épreuve E5</div>
   <h2 class="section-title">Bilan de compétences</h2>
   <p class="section-sub">Synthèse du parcours professionnel présentée lors de l'épreuve E5 du BTS SIO — Session 2026.</p>
-
   <div class="e5-grid fade-in" style="margin-bottom: 48px;">
     <div class="e5-card">
       <span class="e5-num">2</span>
@@ -1056,7 +772,6 @@
       <span class="e5-label">Session de présentation</span>
     </div>
   </div>
-
 </section>
 
 <div class="divider"></div>
@@ -1064,15 +779,14 @@
 <!-- CONTACT -->
 <section id="contact" class="fade-in">
   <div class="section-label">06 — Contact</div>
-
   <div class="contact-wrapper">
     <div class="contact-info">
       <h2>Me contacter</h2>
       <p>Disponible pour échanger autour de mon parcours, de mes projets ou pour toute opportunité professionnelle. N'hésitez pas à me solliciter.</p>
       <div class="contact-links">
-        <a href="mailto:david.ayim.sio&#64;gmail.com" class="contact-link">
+        <a href="mailto:david.ayim.sio@gmail.com" class="contact-link">
           <span class="contact-link-icon">✉️</span>
-          david.ayim.sio&#64;gmail.com
+          david.ayim.sio@gmail.com
         </a>
         <a href="https://www.linkedin.com/in/david-ayim-15275b3ba" target="_blank" class="contact-link">
           <span class="contact-link-icon">💼</span>
@@ -1088,14 +802,13 @@
         </a>
       </div>
     </div>
-
     <div class="epreuve-box fade-in">
       <h3>📋 Épreuve E5 — Ce portfolio présente</h3>
       <ul>
         <li>Mon parcours complet en BTS SIO option SISR (2024–2026)</li>
         <li>Stage 1 : Lycée Georges Brassens, Évry — reconfiguration réseau</li>
-        <li>Stage 2 : Mairie de Champs-sur-Marne — administration SI & support</li>
-        <li>Projet AD : Administration Windows Server 2022 & Active Directory</li>
+        <li>Stage 2 : Mairie de Champs-sur-Marne — administration SI &amp; support</li>
+        <li>Projet AD : Administration Windows Server 2022 &amp; Active Directory</li>
         <li>Projet Xibo : Déploiement d'un serveur d'affichage dynamique</li>
         <li>Projet Stormshield : Administration d'un pare-feu et politique de sécurité</li>
         <li>Les compétences SISR acquises et mises en œuvre dans des contextes réels</li>
@@ -1111,7 +824,20 @@
   <div class="footer-right">Session 2026 ✦ Option SISR</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Intersection Observer for fade-in animations
+<script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.about-grid, .projects-grid, .skills-grid, .e5-grid').forEach(grid => {
+    grid.querySelectorAll('.fade-in').forEach((card, i) => {
+      card.style.transitionDelay = i * 80 + 'ms';
+    });
+  });
+</script>
+</body>
+</html>
