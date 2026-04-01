@@ -236,6 +236,76 @@
   .methode-card h4 { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:#fff; margin-bottom:8px; }
   .methode-card p { font-size:0.83rem; color:var(--text2); line-height:1.7; }
 
+  /* PDF BANNER */
+  .pdf-banner {
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.07));
+    border:1px solid rgba(59,130,246,0.3); border-radius:12px;
+    padding:20px 28px; margin-bottom:40px; flex-wrap:wrap;
+  }
+  .pdf-banner-left { display:flex; align-items:center; gap:16px; }
+  .pdf-icon { font-size:2rem; }
+  .pdf-title { font-family:'Syne',sans-serif; font-weight:700; color:#fff; font-size:0.95rem; margin-bottom:4px; }
+  .pdf-meta { font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--text3); letter-spacing:0.05em; }
+  .pdf-btn {
+    font-family:'Syne',sans-serif; font-weight:700; font-size:0.82rem;
+    padding:10px 22px; background:var(--accent); color:#fff;
+    border-radius:6px; text-decoration:none; white-space:nowrap;
+    transition:background 0.2s,transform 0.15s; flex-shrink:0;
+  }
+  .pdf-btn:hover { background:var(--accent2); transform:translateY(-2px); }
+
+  /* COMPÉTENCES LEGEND */
+  .comp-legend {
+    background:var(--bg2); border:1px solid var(--border); border-radius:12px;
+    padding:20px 24px; margin-bottom:48px;
+  }
+  .comp-legend-title {
+    font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--text3); margin-bottom:14px;
+  }
+  .comp-legend-grid { display:flex; flex-wrap:wrap; gap:10px; }
+  .comp-badge {
+    font-family:'DM Mono',monospace; font-size:0.7rem; padding:5px 14px;
+    border-radius:20px; letter-spacing:0.04em; border:1px solid;
+  }
+  .comp-c1 { color:#60a5fa; border-color:rgba(96,165,250,0.35); background:rgba(96,165,250,0.08); }
+  .comp-c2 { color:#10b981; border-color:rgba(16,185,129,0.35); background:rgba(16,185,129,0.08); }
+  .comp-c3 { color:#f59e0b; border-color:rgba(245,158,11,0.35); background:rgba(245,158,11,0.08); }
+  .comp-c4 { color:#f97316; border-color:rgba(249,115,22,0.35); background:rgba(249,115,22,0.08); }
+  .comp-c5 { color:#8b5cf6; border-color:rgba(139,92,246,0.35); background:rgba(139,92,246,0.08); }
+  .comp-c6 { color:#14b8a6; border-color:rgba(20,184,166,0.35); background:rgba(20,184,166,0.08); }
+
+  /* REALISATION GROUPS */
+  .realisation-group { margin-bottom:48px; }
+  .realisation-group-title {
+    font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
+    color:var(--text2); margin-bottom:20px; padding:12px 20px;
+    background:var(--bg2); border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;
+  }
+  .realisation-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+
+  /* REALISATION CARDS */
+  .realisation-card {
+    background:var(--bg2); border:1px solid var(--border); border-radius:12px;
+    padding:22px; display:flex; flex-direction:column; gap:14px;
+    transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;
+  }
+  .realisation-card:hover {
+    transform:translateY(-4px); border-color:rgba(59,130,246,0.4);
+    box-shadow:0 16px 48px rgba(0,0,0,0.3),var(--glow);
+  }
+  .realisation-header { display:flex; align-items:flex-start; gap:14px; }
+  .realisation-header .project-icon { font-size:1.6rem; flex-shrink:0; }
+  .realisation-header h3 { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:#fff; margin-bottom:6px; line-height:1.3; }
+  .realisation-card p { font-size:0.83rem; color:var(--text2); line-height:1.7; flex:1; }
+  .comp-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+  .comp-tag {
+    font-family:'Syne',sans-serif; font-size:0.7rem; font-weight:700;
+    padding:3px 10px; border-radius:4px; border:1px solid;
+  }
+
   /* COMPÉTENCES */
   .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
   .skill-group { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:28px; }
@@ -285,9 +355,11 @@
     .nav-links { display:none; }
     section { padding:70px 24px; }
     .hero { padding:100px 24px 70px; }
-    .about-grid,.projects-grid,.skills-grid,.e5-grid,.contact-wrapper,.proj-pro-intro,.methode-grid { grid-template-columns:1fr; }
+    .about-grid,.projects-grid,.skills-grid,.e5-grid,.contact-wrapper,.proj-pro-intro,.methode-grid,.realisation-grid { grid-template-columns:1fr; }
     .mast-stats { grid-template-columns:repeat(2,1fr); }
     .stage-item { grid-template-columns:44px 1fr; }
+    .pdf-banner { flex-direction:column; align-items:flex-start; }
+    .comp-legend-grid { gap:8px; }
   }
 </style>
 </head>
@@ -419,18 +491,49 @@
 
 <!-- PROJETS BTS -->
 <section id="projets" class="fade-in">
-  <div class="section-label">03 — Réalisations BTS</div>
-  <h2 class="section-title">Projets BTS SIO</h2>
-  <p class="section-sub">Trois projets phares réalisés durant ma formation, couvrant l'administration système, l'affichage dynamique et la sécurité réseau.</p>
-  <div class="projects-grid">
-    <div class="project-card fade-in">
-      <div class="project-header">
-        <div class="project-icon">🗂️</div>
-        <span class="project-status">RÉALISÉ</span>
+  <div class="section-label">03 — Réalisations</div>
+  <h2 class="section-title">Tableau de synthèse des réalisations</h2>
+  <p class="section-sub">Ensemble des réalisations professionnelles issues de ma formation et de mes stages, associées aux compétences du référentiel BTS SIO SISR.</p>
+
+  <!-- PDF DOWNLOAD -->
+  <div class="pdf-banner fade-in">
+    <div class="pdf-banner-left">
+      <div class="pdf-icon">📄</div>
+      <div>
+        <div class="pdf-title">Tableau de synthèse officiel — BTS SIO Session 2026</div>
+        <div class="pdf-meta">N° candidat : 02149024761 · Lycée Louis Armand · Option SISR · Portfolio : d-ayim.github.io</div>
       </div>
-      <div class="project-body">
-        <h3>Active Directory — Windows Server 2022</h3>
-        <p>Administration complète d'un domaine Active Directory : utilisateurs, groupes, GPO et politiques de sécurité.</p>
+    </div>
+    <a href="tableau_de_synthese.pdf" target="_blank" class="pdf-btn">📥 Télécharger le PDF</a>
+  </div>
+
+  <!-- COMPÉTENCES LEGEND -->
+  <div class="comp-legend fade-in">
+    <div class="comp-legend-title">Légende des compétences</div>
+    <div class="comp-legend-grid">
+      <div class="comp-badge comp-c1">C1 Gérer le patrimoine informatique</div>
+      <div class="comp-badge comp-c2">C2 Répondre aux incidents &amp; demandes</div>
+      <div class="comp-badge comp-c3">C3 Développer la présence en ligne</div>
+      <div class="comp-badge comp-c4">C4 Travailler en mode projet</div>
+      <div class="comp-badge comp-c5">C5 Mettre à disposition un service</div>
+      <div class="comp-badge comp-c6">C6 Organiser son développement pro</div>
+    </div>
+  </div>
+
+  <!-- FORMATION -->
+  <div class="realisation-group fade-in">
+    <div class="realisation-group-title">🎓 Réalisations en cours de formation</div>
+    <div class="realisation-grid">
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🖥️</div>
+          <div>
+            <h3>Windows Server 2022</h3>
+            <span class="project-status">FORMATION</span>
+          </div>
+        </div>
+        <p>Installation et configuration complète d'un serveur Windows Server 2022 : Active Directory, DNS, DHCP, GPO et gestion des utilisateurs. <strong>Compétence phare : Gérer le patrimoine informatique.</strong></p>
         <div class="project-tech">
           <span class="tech-pill">Windows Server 2022</span>
           <span class="tech-pill">Active Directory</span>
@@ -438,16 +541,21 @@
           <span class="tech-pill">DNS / DHCP</span>
           <span class="tech-pill">PowerShell</span>
         </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c1">C1</span>
+          <span class="comp-tag comp-c5">C5</span>
+        </div>
       </div>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-header">
-        <div class="project-icon">📺</div>
-        <span class="project-status">RÉALISÉ</span>
-      </div>
-      <div class="project-body">
-        <h3>Xibo CMS — Affichage dynamique</h3>
-        <p>Déploiement et administration d'un serveur d'affichage dynamique. Configuration des clients et gestion des contenus.</p>
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">📺</div>
+          <div>
+            <h3>Xibo CMS — Affichage dynamique</h3>
+            <span class="project-status">FORMATION</span>
+          </div>
+        </div>
+        <p>Déploiement et administration d'un serveur d'affichage dynamique. Planification structurée, tests d'intégration, accompagnement des utilisateurs. <strong>Compétence phare : Travailler en mode projet.</strong></p>
         <div class="project-tech">
           <span class="tech-pill">Xibo CMS</span>
           <span class="tech-pill">Linux / Apache</span>
@@ -455,16 +563,22 @@
           <span class="tech-pill">Docker</span>
           <span class="tech-pill">Raspberry Pi</span>
         </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c4">C4</span>
+          <span class="comp-tag comp-c5">C5</span>
+          <span class="comp-tag comp-c6">C6</span>
+        </div>
       </div>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-header">
-        <div class="project-icon">🔥</div>
-        <span class="project-status">RÉALISÉ</span>
-      </div>
-      <div class="project-body">
-        <h3>Pare-feu Stormshield — Administration</h3>
-        <p>Configuration d'un pare-feu Stormshield SNS. Règles de filtrage, VPN, supervision du trafic et politique de sécurité.</p>
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🔥</div>
+          <div>
+            <h3>Pare-feu Stormshield</h3>
+            <span class="project-status">FORMATION</span>
+          </div>
+        </div>
+        <p>Configuration d'un pare-feu Stormshield SNS : règles de filtrage, VPN, NAT/PAT. Mise en production avec tests d'intégration et d'acceptation. <strong>Compétence phare : Mettre à disposition un service.</strong></p>
         <div class="project-tech">
           <span class="tech-pill">Stormshield SNS</span>
           <span class="tech-pill">Filtrage</span>
@@ -472,9 +586,162 @@
           <span class="tech-pill">IPS / IDS</span>
           <span class="tech-pill">NAT / PAT</span>
         </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c1">C1</span>
+          <span class="comp-tag comp-c5">C5</span>
+        </div>
       </div>
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🌿</div>
+          <div>
+            <h3>Site web Sanaya BIO</h3>
+            <span class="project-status">FORMATION</span>
+          </div>
+        </div>
+        <p>Création d'un site web pour l'organisation Sanaya BIO. Valorisation de l'image en ligne, référencement et respect du cadre juridique du numérique. <strong>Compétence phare : Développer la présence en ligne.</strong></p>
+        <div class="project-tech">
+          <span class="tech-pill">HTML / CSS</span>
+          <span class="tech-pill">Développement web</span>
+          <span class="tech-pill">SEO</span>
+          <span class="tech-pill">RGPD</span>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c3">C3</span>
+        </div>
+      </div>
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🔎</div>
+          <div>
+            <h3>Veille technologique</h3>
+            <span class="project-status">FORMATION</span>
+          </div>
+        </div>
+        <p>Mise en œuvre d'une stratégie de veille informationnelle régulière. Utilisation d'agrégateurs RSS, flux techniques, suivi des évolutions du secteur SI. <strong>Compétence phare : Organiser son développement professionnel.</strong></p>
+        <div class="project-tech">
+          <span class="tech-pill">Feedly / RSS</span>
+          <span class="tech-pill">Curation</span>
+          <span class="tech-pill">Veille sécurité</span>
+          <span class="tech-pill">ANSSI</span>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c6">C6</span>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <!-- STAGE 1 -->
+  <div class="realisation-group fade-in">
+    <div class="realisation-group-title">🏫 Réalisations en milieu professionnel — Stage 1 (Lycée Georges Brassens, Évry)</div>
+    <div class="realisation-grid">
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🌐</div>
+          <div>
+            <h3>Déploiement de routeurs d'étage</h3>
+            <span class="project-status" style="background:rgba(245,158,11,0.12);color:var(--gold);border-color:rgba(245,158,11,0.25)">STAGE 1</span>
+          </div>
+        </div>
+        <p>Déploiement de routeurs d'étage et isolation des services DHCP dans plusieurs salles informatiques. Reconfiguration réseau complète avec tests de connectivité et documentation.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Routeurs</span>
+          <span class="tech-pill">DHCP</span>
+          <span class="tech-pill">VLAN</span>
+          <span class="tech-pill">Câblage</span>
+          <span class="tech-pill">Documentation réseau</span>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c1">C1</span>
+          <span class="comp-tag comp-c4">C4</span>
+          <span class="comp-tag comp-c5">C5</span>
+          <span class="comp-tag comp-c6">C6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div class="realisation-group fade-in">
+    <div class="realisation-group-title">🏛️ Réalisations en milieu professionnel — Stage 2 (Mairie de Champs-sur-Marne)</div>
+    <div class="realisation-grid">
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">💿</div>
+          <div>
+            <h3>Masterisation de postes Windows</h3>
+            <span class="project-status" style="background:rgba(139,92,246,0.12);color:#a78bfa;border-color:rgba(139,92,246,0.25)">STAGE 2</span>
+          </div>
+        </div>
+        <p>Déploiement d'images système sur 100 postes (parc de 140). Création de l'image master, déploiement par lots, jonction AD, application des GPO et recette utilisateurs. <a href="#projets-pro" style="color:var(--accent2);text-decoration:none">→ Voir le diagramme de Gantt</a></p>
+        <div class="project-tech">
+          <span class="tech-pill">WDS / Clonezilla</span>
+          <span class="tech-pill">Windows 10/11</span>
+          <span class="tech-pill">Active Directory</span>
+          <span class="tech-pill">GPO</span>
+          <span class="tech-pill">GLPI</span>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c1">C1</span>
+          <span class="comp-tag comp-c4">C4</span>
+          <span class="comp-tag comp-c5">C5</span>
+          <span class="comp-tag comp-c6">C6</span>
+        </div>
+      </div>
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🎧</div>
+          <div>
+            <h3>Support utilisateurs &amp; gestion de tickets</h3>
+            <span class="project-status" style="background:rgba(139,92,246,0.12);color:#a78bfa;border-color:rgba(139,92,246,0.25)">STAGE 2</span>
+          </div>
+        </div>
+        <p>Accueil et traitement des demandes des agents municipaux via GLPI. Résolution d'incidents N1/N2, orientation des demandes complexes, suivi des tickets et satisfaction utilisateurs. <strong>Compétence phare : Répondre aux incidents.</strong></p>
+        <div class="project-tech">
+          <span class="tech-pill">GLPI</span>
+          <span class="tech-pill">Support N1/N2</span>
+          <span class="tech-pill">Téléphonie IP</span>
+          <span class="tech-pill">Bureautique</span>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c2">C2</span>
+          <span class="comp-tag comp-c6">C6</span>
+        </div>
+      </div>
+
+      <div class="realisation-card fade-in">
+        <div class="realisation-header">
+          <div class="project-icon">🔌</div>
+          <div>
+            <h3>Déploiement d'équipements réseau</h3>
+            <span class="project-status" style="background:rgba(139,92,246,0.12);color:#a78bfa;border-color:rgba(139,92,246,0.25)">STAGE 2</span>
+          </div>
+        </div>
+        <p>Installation et configuration d'équipements réseau au sein de la mairie. Mise en service de switchs, configuration des ports, tests de connectivité et mise à jour de la documentation réseau.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Switchs administrables</span>
+          <span class="tech-pill">Câblage RJ45</span>
+          <span class="tech-pill">Configuration ports</span>
+          <span class="tech-pill">Tests réseau</span>
+        </div>
+        <div class="comp-tags">
+          <span class="comp-tag comp-c1">C1</span>
+          <span class="comp-tag comp-c5">C5</span>
+          <span class="comp-tag comp-c6">C6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <div class="divider"></div>
@@ -808,11 +1075,13 @@
         <li>Mon parcours complet en BTS SIO option SISR (2024–2026)</li>
         <li>Stage 1 : Lycée Georges Brassens, Évry — reconfiguration réseau</li>
         <li>Stage 2 : Mairie de Champs-sur-Marne — administration SI &amp; support</li>
-        <li>Projet professionnel : Masterisation de 100 postes (Gantt inclus)</li>
-        <li>Projet AD : Administration Windows Server 2022 &amp; Active Directory</li>
-        <li>Projet Xibo : Déploiement d'un serveur d'affichage dynamique</li>
-        <li>Projet Stormshield : Administration pare-feu &amp; politique de sécurité</li>
-        <li>Ma progression technique et professionnelle sur 2 ans de formation</li>
+        <li>Tableau de synthèse officiel intégré au portfolio (PDF téléchargeable)</li>
+        <li>Formation : Windows Server 2022, Xibo CMS, Stormshield, site Sanaya BIO, veille techno</li>
+        <li>Stage 1 : Lycée Georges Brassens — déploiement routeurs &amp; isolation DHCP</li>
+        <li>Stage 2 : Mairie de Champs-sur-Marne — masterisation 100 postes (Gantt)</li>
+        <li>Stage 2 : Support utilisateurs N1/N2 &amp; gestion de tickets GLPI</li>
+        <li>Stage 2 : Déploiement et configuration d'équipements réseau</li>
+        <li>6 compétences du référentiel BTS SIO couvertes et documentées</li>
       </ul>
     </div>
   </div>
