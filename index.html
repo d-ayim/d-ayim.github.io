@@ -306,6 +306,100 @@
     padding:3px 10px; border-radius:4px; border:1px solid;
   }
 
+  /* REALISATION CARDS - IMAGES */
+  .realisation-card .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .realisation-card .project-gallery img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .realisation-card .gallery-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text2);
+    letter-spacing: 0.06em;
+    margin-top: 16px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+  .realisation-card .project-gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* MODAL / LIGHTBOX */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(10, 14, 26, 0.95);
+    backdrop-filter: blur(8px);
+    animation: fadeInModal 0.3s;
+  }
+  @keyframes fadeInModal { from { opacity: 0 } to { opacity: 1 } }
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: auto;
+    max-width: 90%;
+    max-height: 85vh;
+    animation-name: zoom;
+    animation-duration: 0.3s;
+  }
+  @keyframes zoom {
+    from {transform:scale(0.8); opacity: 0;}
+    to {transform:scale(1); opacity: 1;}
+  }
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .close-modal:hover,
+  .close-modal:focus {
+    color: var(--text3);
+    text-decoration: none;
+  }
+
+  /* REALISATION CARDS - DOC LINK */
+  .project-doc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: var(--text2);
+    margin-top: 8px;
+    transition: all 0.2s;
+  }
+  .project-doc-link:hover { border-color:var(--accent2); color:var(--accent2); background:rgba(59,130,246,0.1); }
+  .project-doc-link span { font-size: 1.1rem; }
+
   /* COMPÉTENCES */
   .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
   .skill-group { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:28px; }
@@ -319,13 +413,6 @@
   .skill-fill.green  { background:linear-gradient(to right,#059669,var(--green)); }
   .skill-fill.purple { background:linear-gradient(to right,#7c3aed,var(--purple)); }
 
-  /* E5 */
-  .e5-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .e5-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; text-align:center; transition:border-color 0.25s,box-shadow 0.25s; }
-  .e5-card:hover { border-color:rgba(245,158,11,0.4); box-shadow:0 0 30px rgba(245,158,11,0.08); }
-  .e5-num { font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800; color:var(--gold); display:block; line-height:1; margin-bottom:6px; }
-  .e5-label { font-size:0.83rem; color:var(--text2); }
-
   /* CONTACT */
   .contact-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
   .contact-info h2 { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:#fff; margin-bottom:16px; }
@@ -334,11 +421,12 @@
   .contact-link { display:flex; align-items:center; gap:14px; padding:14px 18px; background:var(--bg2); border:1px solid var(--border); border-radius:8px; text-decoration:none; color:var(--text); font-size:0.9rem; transition:border-color 0.2s,color 0.2s; }
   .contact-link:hover { border-color:var(--accent2); color:var(--accent2); }
   .contact-link-icon { font-size:1.1rem; }
-  .epreuve-box { background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.06)); border:1px solid rgba(59,130,246,0.25); border-radius:14px; padding:36px; }
-  .epreuve-box h3 { font-family:'Syne',sans-serif; font-weight:700; color:var(--accent2); font-size:1.1rem; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
-  .epreuve-box ul { list-style:none; display:flex; flex-direction:column; gap:12px; }
-  .epreuve-box li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--text2); line-height:1.6; }
-  .epreuve-box li::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; margin-top:1px; }
+  .contact-form { display:flex; flex-direction:column; gap:16px; }
+  .form-group { display:flex; flex-direction:column; gap:6px; }
+  .form-group label { font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--text2); letter-spacing:0.06em; }
+  .form-control { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:12px 16px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); transition:border-color 0.2s; width:100%; }
+  .form-control:focus { outline:none; border-color:var(--accent2); }
+  textarea.form-control { min-height:120px; resize:vertical; }
 
   footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:32px 48px; display:flex; align-items:center; justify-content:space-between; }
   footer .footer-left { font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--text3); letter-spacing:0.06em; }
@@ -349,13 +437,18 @@
   .fade-in.visible { opacity:1; transform:none; }
   .stripe { display:inline; background:linear-gradient(120deg,rgba(59,130,246,0.18),rgba(59,130,246,0.05)); border-radius:3px; padding:0 4px; }
 
+  /* PDF PREVIEW */
+  .pdf-container { display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .pdf-embed { width:400px; height:300px; border:1px solid var(--border); border-radius:8px; transition:width 0.3s, height 0.3s; }
+  .pdf-embed.full { width:100%; height:80vh; }
+
   /* RESPONSIVE */
   @media (max-width:900px) {
     nav { padding:16px 24px; }
     .nav-links { display:none; }
     section { padding:70px 24px; }
     .hero { padding:100px 24px 70px; }
-    .about-grid,.projects-grid,.skills-grid,.e5-grid,.contact-wrapper,.proj-pro-intro,.methode-grid,.realisation-grid { grid-template-columns:1fr; }
+    .about-grid,.projects-grid,.skills-grid,.contact-wrapper,.proj-pro-intro,.methode-grid,.realisation-grid { grid-template-columns:1fr; }
     .mast-stats { grid-template-columns:repeat(2,1fr); }
     .stage-item { grid-template-columns:44px 1fr; }
     .pdf-banner { flex-direction:column; align-items:flex-start; }
@@ -373,8 +466,8 @@
     <a href="#stages">Stages</a>
     <a href="#projets">Projets BTS</a>
     <a href="#projets-pro">Projets Pro</a>
+    <a href="#veille">Veille Technologique</a>
     <a href="#competences">Compétences</a>
-    <a href="#epreuve">Épreuve E5</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-badge">BTS SIO · Session 2026</div>
@@ -448,18 +541,14 @@
       <div class="stage-dot">🏫</div>
       <div class="stage-content">
         <div class="stage-meta">
-          <span class="stage-period">STAGE 1 · 2025</span>
+          <span class="stage-period">STAGE 1 · 02/06/2025 – 04/07/2025</span>
           <span class="stage-org">Lycée Georges Brassens — Évry (91)</span>
         </div>
-        <h3>Technicien réseau — Reconfiguration de salles</h3>
-        <p>Participation active à la reconfiguration réseau de plusieurs salles informatiques. Intervention sur l'infrastructure physique et logique du réseau local scolaire.</p>
+        <h3>Lycée Georges Brassens — Évry (91)</h3>
+        <p>Réalisation d'un audit physique et d'une cartographie des accès réseau afin de préparer le déploiement de la nouvelle infrastructure.</p>
         <div class="task-list">
           <span class="task-chip chip-blue">Reconfiguration réseau</span>
-          <span class="task-chip chip-blue">Câblage &amp; brassage</span>
-          <span class="task-chip chip-blue">Configuration switchs</span>
-          <span class="task-chip chip-blue">Adressage IP</span>
           <span class="task-chip chip-blue">Documentation réseau</span>
-          <span class="task-chip chip-blue">Tests de connectivité</span>
         </div>
       </div>
     </div>
@@ -470,17 +559,15 @@
           <span class="stage-period">STAGE 2 · 05/01/2026 – 13/02/2026</span>
           <span class="stage-org">Mairie de Champs-sur-Marne (77)</span>
         </div>
-        <h3>Technicien SI — Administration &amp; Support</h3>
-        <p>Mission polyvalente au sein du service informatique municipal. Gestion du quotidien technique, déploiement d'équipements et administration de l'infrastructure réseau, dont la masterisation de 100 postes sur le parc de 140.</p>
+        <h3>Mairie de Champs-sur-Marne (77)</h3>
+        <p>Mission polyvalente au sein du service informatique municipal. Gestion du quotidien technique, déploiement d'équipements et administration de l'infrastructure réseau, dont la masterisation de 40 postes sur le parc de 140.</p>
         <div class="task-list">
           <span class="task-chip chip-purple">Configuration équipements réseau</span>
           <span class="task-chip chip-purple">Support utilisateurs</span>
           <span class="task-chip chip-purple">Gestion de tickets (GLPI)</span>
           <span class="task-chip chip-purple">Déploiement postes &amp; équipements</span>
-          <span class="task-chip chip-purple">Masterisation du parc (100 postes)</span>
+          <span class="task-chip chip-purple">Masterisation du parc (40 postes)</span>
           <span class="task-chip chip-purple">Résolution de pannes</span>
-          <span class="task-chip chip-purple">Administration serveurs</span>
-          <span class="task-chip chip-purple">Maintenance préventive</span>
         </div>
       </div>
     </div>
@@ -489,23 +576,34 @@
 
 <div class="divider"></div>
 
+<!-- ANNEXES -->
+<section id="annexes" class="fade-in">
+  <div class="section-label">03 — Annexes</div>
+  <h2 class="section-title">Épreuve E5</h2>
+  <div class="section-sub" style="max-width: 800px;">
+    <p style="margin-bottom: 16px;">Cette épreuve vise à évaluer chez la personne candidate l'acquisition des compétences décrites dans le bloc de compétences « Support et mise à disposition de services informatiques » (BLOC 1), à savoir :</p>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+      <li><span style="color:var(--accent); margin-right:8px;">→</span>Gérer le patrimoine informatique ;</li>
+      <li><span style="color:var(--accent); margin-right:8px;">→</span>Répondre aux incidents et demandes d'assistance et d'évolution ;</li>
+      <li><span style="color:var(--accent); margin-right:8px;">→</span>Développer la présence en ligne de l'organisation ;</li>
+      <li><span style="color:var(--accent); margin-right:8px;">→</span>Travailler en mode projet ;</li>
+      <li><span style="color:var(--accent); margin-right:8px;">→</span>Mettre à disposition des utilisateurs un service informatique ;</li>
+      <li><span style="color:var(--accent); margin-right:8px;">→</span>Organiser son développement professionnel.</li>
+    </ul>
+    <p style="margin-top: 24px;">Accédez au document officiel via le lien ci-dessous.</p>
+  </div>
+  <div class="pdf-container">
+    <a href="https://docs.google.com/spreadsheets/d/1NTNOiUTZdy-ImDV_bduwQaLBmYKKqQ9j/edit?usp=sharing" target="_blank" class="btn-primary">Voir le tableau de synthèse</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- PROJETS BTS -->
 <section id="projets" class="fade-in">
-  <div class="section-label">03 — Réalisations</div>
-  <h2 class="section-title">Tableau de synthèse des réalisations</h2>
-  <p class="section-sub">Ensemble des réalisations professionnelles issues de ma formation et de mes stages, associées aux compétences du référentiel BTS SIO SISR.</p>
-
-  <!-- PDF DOWNLOAD -->
-  <div class="pdf-banner fade-in">
-    <div class="pdf-banner-left">
-      <div class="pdf-icon">📄</div>
-      <div>
-        <div class="pdf-title">Tableau de synthèse officiel — BTS SIO Session 2026</div>
-        <div class="pdf-meta">N° candidat : 02149024761 · Lycée Louis Armand · Option SISR · Portfolio : d-ayim.github.io</div>
-      </div>
-    </div>
-    <a href="tableau_de_synthese.pdf" target="_blank" class="pdf-btn">📥 Télécharger le PDF</a>
-  </div>
+  <div class="section-label">04 — Réalisations</div>
+  <h2 class="section-title">Projets réalisés</h2>
+  <p class="section-sub">Ensemble des projets techniques majeurs réalisés durant ma formation BTS SIO SISR.</p>
 
   <!-- COMPÉTENCES LEGEND -->
   <div class="comp-legend fade-in">
@@ -533,7 +631,7 @@
             <span class="project-status">FORMATION</span>
           </div>
         </div>
-        <p>Installation et configuration complète d'un serveur Windows Server 2022 : Active Directory, DNS, DHCP, GPO et gestion des utilisateurs. <strong>Compétence phare : Gérer le patrimoine informatique.</strong></p>
+        <p>Installation et configuration complète d'un serveur Windows Server 2022 : Active Directory, DNS, DHCP, GPO et gestion des utilisateurs.</p>
         <div class="project-tech">
           <span class="tech-pill">Windows Server 2022</span>
           <span class="tech-pill">Active Directory</span>
@@ -542,7 +640,7 @@
           <span class="tech-pill">PowerShell</span>
         </div>
         <div class="comp-tags">
-          <span class="comp-tag comp-c1">C1</span>
+          <span class="comp-tag comp-c4">C4</span>
           <span class="comp-tag comp-c5">C5</span>
         </div>
       </div>
@@ -555,7 +653,15 @@
             <span class="project-status">FORMATION</span>
           </div>
         </div>
-        <p>Déploiement et administration d'un serveur d'affichage dynamique. Planification structurée, tests d'intégration, accompagnement des utilisateurs. <strong>Compétence phare : Travailler en mode projet.</strong></p>
+        <p>Déploiement et administration d'un serveur d'affichage dynamique. Planification structurée, tests d'intégration, accompagnement des utilisateurs.</p>
+        <a href="https://docs.google.com/document/d/1wE4J8V3316oS9ykj6mRopJSfSCq9sx378wqMrYtZyT0/edit?tab=t.0" target="_blank" class="project-doc-link">
+          <span>📄</span>
+          Voir la documentation du projet
+        </a>
+        <a href="img_stage2/gantt_xibo_cms.pdf" target="_blank" class="project-doc-link">
+          <span>📊</span>
+          Voir le diagramme de Gantt
+        </a>
         <div class="project-tech">
           <span class="tech-pill">Xibo CMS</span>
           <span class="tech-pill">Linux / Apache</span>
@@ -566,7 +672,6 @@
         <div class="comp-tags">
           <span class="comp-tag comp-c4">C4</span>
           <span class="comp-tag comp-c5">C5</span>
-          <span class="comp-tag comp-c6">C6</span>
         </div>
       </div>
 
@@ -578,7 +683,7 @@
             <span class="project-status">FORMATION</span>
           </div>
         </div>
-        <p>Configuration d'un pare-feu Stormshield SNS : règles de filtrage, VPN, NAT/PAT. Mise en production avec tests d'intégration et d'acceptation. <strong>Compétence phare : Mettre à disposition un service.</strong></p>
+        <p>Configuration d'un pare-feu Stormshield SNS : règles de filtrage, VPN, NAT/PAT. Mise en production avec tests d'intégration et d'acceptation.</p>
         <div class="project-tech">
           <span class="tech-pill">Stormshield SNS</span>
           <span class="tech-pill">Filtrage</span>
@@ -587,28 +692,29 @@
           <span class="tech-pill">NAT / PAT</span>
         </div>
         <div class="comp-tags">
-          <span class="comp-tag comp-c1">C1</span>
-          <span class="comp-tag comp-c5">C5</span>
+          <span class="comp-tag comp-c2">C2</span>
         </div>
       </div>
 
       <div class="realisation-card fade-in">
         <div class="realisation-header">
-          <div class="project-icon">🌿</div>
+          <div class="project-icon">💻</div>
           <div>
-            <h3>Site web Sanaya BIO</h3>
+            <h3>Création d'un portfolio en ligne</h3>
             <span class="project-status">FORMATION</span>
           </div>
         </div>
-        <p>Création d'un site web pour l'organisation Sanaya BIO. Valorisation de l'image en ligne, référencement et respect du cadre juridique du numérique. <strong>Compétence phare : Développer la présence en ligne.</strong></p>
+        <p>Conception et développement d'un portfolio en ligne pour présenter mes compétences et projets. Intégration d'un profil LinkedIn professionnel pour optimiser ma présence numérique.</p>
         <div class="project-tech">
           <span class="tech-pill">HTML / CSS</span>
-          <span class="tech-pill">Développement web</span>
+          <span class="tech-pill">JavaScript</span>
           <span class="tech-pill">SEO</span>
-          <span class="tech-pill">RGPD</span>
+          <span class="tech-pill">LinkedIn</span>
+          <span class="tech-pill">UI/UX</span>
         </div>
         <div class="comp-tags">
           <span class="comp-tag comp-c3">C3</span>
+          <span class="comp-tag comp-c6">C6</span>
         </div>
       </div>
 
@@ -620,7 +726,7 @@
             <span class="project-status">FORMATION</span>
           </div>
         </div>
-        <p>Mise en œuvre d'une stratégie de veille informationnelle régulière. Utilisation d'agrégateurs RSS, flux techniques, suivi des évolutions du secteur SI. <strong>Compétence phare : Organiser son développement professionnel.</strong></p>
+        <p>Mise en œuvre d'une stratégie de veille informationnelle régulière. Utilisation d'agrégateurs RSS, flux techniques, suivi des évolutions du secteur SI.</p>
         <div class="project-tech">
           <span class="tech-pill">Feedly / RSS</span>
           <span class="tech-pill">Curation</span>
@@ -635,20 +741,32 @@
     </div>
   </div>
 
-  <!-- STAGE 1 -->
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJETS PRO -->
+<section id="projets-pro" class="fade-in">
+  <div class="section-label">05 — Projets professionnels</div>
+  <h2 class="section-title">Réalisations en milieu professionnel</h2>
+  <p class="section-sub">Projets concrets menés lors de mes deux stages, démontrant l'application des compétences en situation réelle.</p>
+
   <div class="realisation-group fade-in">
-    <div class="realisation-group-title">🏫 Réalisations en milieu professionnel — Stage 1 (Lycée Georges Brassens, Évry)</div>
     <div class="realisation-grid">
 
       <div class="realisation-card fade-in">
         <div class="realisation-header">
           <div class="project-icon">🌐</div>
           <div>
-            <h3>Déploiement de routeurs d'étage</h3>
+            <h3>Audit physique et cartographie de l'infrastructure réseau</h3>
             <span class="project-status" style="background:rgba(245,158,11,0.12);color:var(--gold);border-color:rgba(245,158,11,0.25)">STAGE 1</span>
           </div>
         </div>
-        <p>Déploiement de routeurs d'étage et isolation des services DHCP dans plusieurs salles informatiques. Reconfiguration réseau complète avec tests de connectivité et documentation.</p>
+        <p>Dans la perspective d'une refonte de l'architecture réseau du lycée, j'ai été chargé de réaliser un audit physique exhaustif des équipements de connectique. Ce travail préparatoire était indispensable pour permettre à l'équipe technique de planifier ses futurs déploiements.</p>
+        <a href="https://docs.google.com/spreadsheets/d/1loqQMKwcDbv23Ep4BGzkeYz3fIlc9b9x/edit?gid=1351733686#gid=1351733686" target="_blank" class="project-doc-link">
+          <span>📊</span>
+          Voir la cartographie réseau
+        </a>
         <div class="project-tech">
           <span class="tech-pill">Routeurs</span>
           <span class="tech-pill">DHCP</span>
@@ -659,18 +777,10 @@
         <div class="comp-tags">
           <span class="comp-tag comp-c1">C1</span>
           <span class="comp-tag comp-c4">C4</span>
-          <span class="comp-tag comp-c5">C5</span>
-          <span class="comp-tag comp-c6">C6</span>
         </div>
       </div>
 
-    </div>
-  </div>
-
-  <!-- STAGE 2 -->
-  <div class="realisation-group fade-in">
-    <div class="realisation-group-title">🏛️ Réalisations en milieu professionnel — Stage 2 (Mairie de Champs-sur-Marne)</div>
-    <div class="realisation-grid">
+      <!-- STAGE 2 -->
 
       <div class="realisation-card fade-in">
         <div class="realisation-header">
@@ -680,9 +790,14 @@
             <span class="project-status" style="background:rgba(139,92,246,0.12);color:#a78bfa;border-color:rgba(139,92,246,0.25)">STAGE 2</span>
           </div>
         </div>
-        <p>Déploiement d'images système sur 100 postes (parc de 140). Création de l'image master, déploiement par lots, jonction AD, application des GPO et recette utilisateurs. <a href="#projets-pro" style="color:var(--accent2);text-decoration:none">→ Voir le diagramme de Gantt</a></p>
+        <p>Déploiement d'images système sur 40 postes (parc de 140). Création de l'image master, déploiement par lots, jonction AD, application des GPO et recette utilisateurs.</p>
+        <h4 class="gallery-title">Images de l'installation d'un Master</h4>
+        <div class="project-gallery">
+          <img src="img_stage2/IMG_3739.jpg" alt="Préparation du poste master pour l'image système">
+          <img src="img_stage2/IMG_3738.jpg" alt="Déploiement de l'image via le réseau">
+          <img src="img_stage2/IMG_3827.jpg" alt="Poste de travail après masterisation">
+        </div>
         <div class="project-tech">
-          <span class="tech-pill">WDS / Clonezilla</span>
           <span class="tech-pill">Windows 10/11</span>
           <span class="tech-pill">Active Directory</span>
           <span class="tech-pill">GPO</span>
@@ -692,7 +807,6 @@
           <span class="comp-tag comp-c1">C1</span>
           <span class="comp-tag comp-c4">C4</span>
           <span class="comp-tag comp-c5">C5</span>
-          <span class="comp-tag comp-c6">C6</span>
         </div>
       </div>
 
@@ -704,7 +818,11 @@
             <span class="project-status" style="background:rgba(139,92,246,0.12);color:#a78bfa;border-color:rgba(139,92,246,0.25)">STAGE 2</span>
           </div>
         </div>
-        <p>Accueil et traitement des demandes des agents municipaux via GLPI. Résolution d'incidents N1/N2, orientation des demandes complexes, suivi des tickets et satisfaction utilisateurs. <strong>Compétence phare : Répondre aux incidents.</strong></p>
+        <p>Accueil et traitement des demandes des agents municipaux via GLPI. Résolution d'incidents N1/N2, orientation des demandes complexes, suivi des tickets et satisfaction utilisateurs.</p>
+        <a href="img_stage2/registre_interventions.pdf" target="_blank" class="project-doc-link">
+          <span>📄</span>
+          Voir le registre d'interventions
+        </a>
         <div class="project-tech">
           <span class="tech-pill">GLPI</span>
           <span class="tech-pill">Support N1/N2</span>
@@ -713,7 +831,6 @@
         </div>
         <div class="comp-tags">
           <span class="comp-tag comp-c2">C2</span>
-          <span class="comp-tag comp-c6">C6</span>
         </div>
       </div>
 
@@ -726,6 +843,10 @@
           </div>
         </div>
         <p>Installation et configuration d'équipements réseau au sein de la mairie. Mise en service de switchs, configuration des ports, tests de connectivité et mise à jour de la documentation réseau.</p>
+        <a href="img_stage2/doc_cpl_devolo.pdf" target="_blank" class="project-doc-link">
+          <span>📄</span>
+          Voir la documentation CPL Devolo
+        </a>
         <div class="project-tech">
           <span class="tech-pill">Switchs administrables</span>
           <span class="tech-pill">Câblage RJ45</span>
@@ -735,7 +856,6 @@
         <div class="comp-tags">
           <span class="comp-tag comp-c1">C1</span>
           <span class="comp-tag comp-c5">C5</span>
-          <span class="comp-tag comp-c6">C6</span>
         </div>
       </div>
 
@@ -746,247 +866,129 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     PROJETS PROFESSIONNELS + GANTT
-══════════════════════════════════════════ -->
-<section id="projets-pro" class="fade-in">
-  <div class="section-label">04 — Projets professionnels</div>
-  <h2 class="section-title">Masterisation du parc informatique</h2>
-  <p class="section-sub">Projet mené en stage à la Mairie de Champs-sur-Marne du <strong>5 janvier</strong> au <strong>13 février 2026</strong> — déploiement d'images système sur 100 postes (parc total : 140 postes, dont 40 déjà masterisés).</p>
-
-  <!-- Stats -->
-  <div class="mast-stats fade-in">
-    <div class="mast-stat">
-      <span class="mast-stat-num blue">140</span>
-      <span class="mast-stat-label">Postes total du parc</span>
-    </div>
-    <div class="mast-stat">
-      <span class="mast-stat-num green">40</span>
-      <span class="mast-stat-label">Déjà masterisés avant le stage</span>
-    </div>
-    <div class="mast-stat">
-      <span class="mast-stat-num orange">100</span>
-      <span class="mast-stat-label">Postes masterisés durant le stage</span>
-    </div>
-    <div class="mast-stat">
-      <span class="mast-stat-num gold">6 sem.</span>
-      <span class="mast-stat-label">Durée du projet (05/01 → 13/02)</span>
+<!-- VEILLE TECHNOLOGIQUE -->
+<section id="veille" class="fade-in">
+  <div class="section-label">06 — Veille Technologique</div>
+  <h2 class="section-title">Veille Technologique</h2>
+  <p class="section-sub" style="margin-bottom:32px;">
+    <strong>Green IT — Informatique durable :</strong> L'ensemble des pratiques, technologies et stratégies visant à réduire l'impact environnemental du secteur informatique. Cela comprend l'optimisation énergétique des équipements et des data centers, la gestion responsable des déchets électroniques, la virtualisation des ressources, et la promotion d'une infrastructure IT plus écologique et durable.
+  </p>
+  <div class="veille-container fade-in" style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:32px; margin-top:32px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div>
+        <h3 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; font-size:1.1rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+          <span style="font-size:1.4rem;">♻️</span> Enjeux du Green IT
+        </h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--green); font-weight:700; flex-shrink:0;">◆</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Réduction de la consommation énergétique des data centers et serveurs</span>
+          </li>
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--green); font-weight:700; flex-shrink:0;">◆</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Diminution de l'empreinte carbone du secteur informatique</span>
+          </li>
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--green); font-weight:700; flex-shrink:0;">◆</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Gestion responsable des déchets électroniques (DEEE)</span>
+          </li>
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--green); font-weight:700; flex-shrink:0;">◆</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Optimisation des cycles de vie des équipements informatiques</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; font-size:1.1rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+          <span style="font-size:1.4rem;">🌍</span> Bonnes pratiques
+        </h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--accent2); font-weight:700; flex-shrink:0;">▸</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Virtualisation pour optimiser les ressources serveur</span>
+          </li>
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--accent2); font-weight:700; flex-shrink:0;">▸</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Mise en place de systèmes de refroidissement efficace</span>
+          </li>
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--accent2); font-weight:700; flex-shrink:0;">▸</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Utilisation d'énergies renouvelables pour les infrastructures</span>
+          </li>
+          <li style="margin-bottom:12px; display:flex; align-items:flex-start; gap:10px;">
+            <span style="color:var(--accent2); font-weight:700; flex-shrink:0;">▸</span>
+            <span style="color:var(--text2); font-size:0.9rem;">Déploiement de politiques de télétravail et réduction des transports</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- Contexte + Méthode -->
-  <div class="proj-pro-intro fade-in">
-    <div class="proj-pro-card">
-      <h3>📋 Contexte du projet</h3>
-      <p>La mairie de Champs-sur-Marne disposait d'un parc de 140 postes informatiques. 40 postes avaient déjà fait l'objet d'une masterisation. L'objectif était de déployer une image système standardisée sur les 100 postes restants pour homogénéiser l'environnement de travail des agents, faciliter la maintenance et sécuriser les postes.</p>
-    </div>
-    <div class="proj-pro-card">
-      <h3>🛠️ Outils &amp; méthode utilisés</h3>
-      <p>Le projet a été conduit selon une approche structurée en phases successives :</p>
-      <ul>
-        <li>Analyse du parc existant et inventaire (GLPI)</li>
-        <li>Création et validation de l'image master (WDS / Clonezilla)</li>
-        <li>Déploiement par lots avec tests de conformité</li>
-        <li>Jonction au domaine Active Directory</li>
-        <li>Application des GPO et configuration finale</li>
-        <li>Recette et validation avec les utilisateurs</li>
-      </ul>
+  <!-- RESSOURCES ARTICLES -->
+  <div style="margin-top:48px;">
+    <h3 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; font-size:1.1rem; margin-bottom:24px; display:flex; align-items:center; gap:8px;">
+      <span style="font-size:1.4rem;">📚</span> Ressources &amp; Articles référencés
+    </h3>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+      <a href="https://greenit.eco/nos-etudes-et-essais/impacts-environnementaux-de-lia-dans-le-monde-en-2025/" target="_blank" style="text-decoration:none;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.25s, box-shadow 0.25s; cursor:pointer; height:100%;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🤖</div>
+          <h4 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; margin-bottom:8px; font-size:0.95rem;">L'impact environnemental de l'IA (GreenIT.fr)</h4>
+          <p style="color:var(--text2); font-size:0.85rem; line-height:1.6;">Analyse prospective des impacts de l'IA sur l'environnement à l'horizon 2025.</p>
+        </div>
+      </a>
+      <a href="https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/barometre-du-numerique/le-barometre-du-numerique-edition-2026.html" target="_blank" style="text-decoration:none;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.25s, box-shadow 0.25s; cursor:pointer; height:100%;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">📊</div>
+          <h4 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; margin-bottom:8px; font-size:0.95rem;">Baromètre du Numérique 2026 (ARCEP)</h4>
+          <p style="color:var(--text2); font-size:0.85rem; line-height:1.6;">Publication de référence sur l'adoption et les usages des technologies numériques en France.</p>
+        </div>
+      </a>
+      <a href="https://agirpourlatransition.ademe.fr/collectivites/conseils/gestion-collectivite/numerique-responsable" target="_blank" style="text-decoration:none;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.25s, box-shadow 0.25s; cursor:pointer; height:100%;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">📄</div>
+          <h4 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; margin-bottom:8px; font-size:0.95rem;">Guide Pratique Numérique Responsable (ADEME)</h4>
+          <p style="color:var(--text2); font-size:0.85rem; line-height:1.6;">Recommandations et bonnes pratiques pour un numérique responsable au sein des collectivités.</p>
+        </div>
+      </a>
+      <a href="https://www.cigref.fr/wp/wp-content/uploads/2025/10/Rapport-dorientation-strategique-2025-4-archetypes-de-la-fonction-numerique-pour-2040-Cigref.pdf" target="_blank" style="text-decoration:none;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.25s, box-shadow 0.25s; cursor:pointer; height:100%;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🚀</div>
+          <h4 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; margin-bottom:8px; font-size:0.95rem;">Stratégies NR et passage à l'échelle (Cigref)</h4>
+          <p style="color:var(--text2); font-size:0.85rem; line-height:1.6;">Rapport d'orientation sur les futurs de la fonction numérique et les stratégies de déploiement.</p>
+        </div>
+      </a>
+      <a href="https://greenly.earth/blog/secteurs/numerique-responsable" target="_blank" style="text-decoration:none;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.25s, box-shadow 0.25s; cursor:pointer; height:100%;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🌱</div>
+          <h4 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; margin-bottom:8px; font-size:0.95rem;">Guide de l'utilisateur et bons gestes (Greenly)</h4>
+          <p style="color:var(--text2); font-size:0.85rem; line-height:1.6;">Conseils pratiques et gestes quotidiens pour un usage plus sobre et responsable du numérique.</p>
+        </div>
+      </a>
+      <a href="https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/" target="_blank" style="text-decoration:none;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.25s, box-shadow 0.25s; cursor:pointer; height:100%;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">📘</div>
+          <h4 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; margin-bottom:8px; font-size:0.95rem;">Référentiel d'Écoconception (RGESN)</h4>
+          <p style="color:var(--text2); font-size:0.85rem; line-height:1.6;">Le Référentiel Général d’Écoconception de Services Numériques (v. 2024), le cadre officiel pour un numérique durable.</p>
+        </div>
+      </a>
     </div>
   </div>
 
-  <!-- GANTT -->
-  <div class="gantt-wrapper fade-in">
-    <div class="gantt-title">📊 Diagramme de Gantt — Masterisation du parc</div>
-    <div class="gantt-subtitle">Mairie de Champs-sur-Marne · Stage 2 · 05 janvier → 13 février 2026</div>
-
-    <div class="gantt-legend">
-      <div class="gantt-legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Analyse &amp; préparation</div>
-      <div class="gantt-legend-item"><div class="legend-dot" style="background:#10b981"></div>Création image master</div>
-      <div class="gantt-legend-item"><div class="legend-dot" style="background:#f97316"></div>Déploiement postes</div>
-      <div class="gantt-legend-item"><div class="legend-dot" style="background:#8b5cf6"></div>Intégration AD &amp; GPO</div>
-      <div class="gantt-legend-item"><div class="legend-dot" style="background:#14b8a6"></div>Tests &amp; validation</div>
-      <div class="gantt-legend-item"><div class="legend-dot" style="background:#f59e0b"></div>Recette &amp; documentation</div>
-    </div>
-
-    <table class="gantt-table">
-      <thead>
-        <!-- Ligne mois -->
-        <tr>
-          <th></th>
-          <th colspan="4" class="gantt-month-header">JANVIER 2026</th>
-          <th colspan="6" class="gantt-month-header">FÉVRIER 2026</th>
-        </tr>
-        <!-- Ligne semaines -->
-        <tr>
-          <th></th>
-          <th class="gantt-week-header month-start">S1<br><span style="opacity:0.6;font-size:0.58rem">05-09/01</span></th>
-          <th class="gantt-week-header">S2<br><span style="opacity:0.6;font-size:0.58rem">12-16/01</span></th>
-          <th class="gantt-week-header">S3<br><span style="opacity:0.6;font-size:0.58rem">19-23/01</span></th>
-          <th class="gantt-week-header">S4<br><span style="opacity:0.6;font-size:0.58rem">26-30/01</span></th>
-          <th class="gantt-week-header month-start">S5<br><span style="opacity:0.6;font-size:0.58rem">02-06/02</span></th>
-          <th class="gantt-week-header">S6<br><span style="opacity:0.6;font-size:0.58rem">09-13/02</span></th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <!-- PHASE 1 -->
-        <tr class="gantt-group"><td colspan="7">Phase 1 — Analyse &amp; préparation</td></tr>
-        <tr>
-          <td class="gantt-task-name">Audit du parc informatique<span class="task-phase">Inventaire GLPI, état des postes</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-blue">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-blue"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Définition des besoins<span class="task-phase">Logiciels, config, GPO cibles</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-blue"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-blue">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-
-        <!-- PHASE 2 -->
-        <tr class="gantt-group"><td colspan="7">Phase 2 — Création de l'image master</td></tr>
-        <tr>
-          <td class="gantt-task-name">Installation OS de référence<span class="task-phase">Windows 10/11, drivers, logiciels</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-green">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-green"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Capture &amp; validation de l'image<span class="task-phase">WDS / Clonezilla, test de déploiement</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-green">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-
-        <!-- PHASE 3 -->
-        <tr class="gantt-group"><td colspan="7">Phase 3 — Déploiement par lots</td></tr>
-        <tr>
-          <td class="gantt-task-name">Lot 1 — 33 postes (Bâtiment A)<span class="task-phase">Déploiement image + vérification</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-orange">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-orange"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Lot 2 — 33 postes (Bâtiment B)<span class="task-phase">Déploiement image + vérification</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-orange">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-orange"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Lot 3 — 34 postes (Bâtiment C)<span class="task-phase">Déploiement image + vérification</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-orange">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-
-        <!-- PHASE 4 -->
-        <tr class="gantt-group"><td colspan="7">Phase 4 — Intégration Active Directory &amp; GPO</td></tr>
-        <tr>
-          <td class="gantt-task-name">Jonction au domaine AD<span class="task-phase">Renommage, rattachement OU</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-purple">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-purple"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Application des GPO<span class="task-phase">Politiques, restrictions, mises à jour</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-purple">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-purple"></div></td>
-        </tr>
-
-        <!-- PHASE 5 -->
-        <tr class="gantt-group"><td colspan="7">Phase 5 — Tests, recette &amp; documentation</td></tr>
-        <tr>
-          <td class="gantt-task-name">Tests de conformité<span class="task-phase">Connexion AD, logiciels, impression</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-teal">●</div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-teal"></div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Recette utilisateurs<span class="task-phase">Validation par les agents</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-teal">●</div></td>
-        </tr>
-        <tr>
-          <td class="gantt-task-name">Documentation &amp; bilan<span class="task-phase">Procédure, inventaire mis à jour</span></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-empty"></div></td>
-          <td class="gantt-cell"><div class="gantt-bar bar-gold">●</div></td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-
-  <!-- MÉTHODE DE GESTION DE PROJET -->
-  <div class="methode-grid fade-in">
-    <div class="methode-card">
-      <div class="methode-num">01</div>
-      <h4>Planification (Gantt)</h4>
-      <p>Le diagramme de Gantt a permis de visualiser et de séquencer les tâches dans le temps, d'identifier les dépendances entre phases et de respecter les délais imposés par le stage.</p>
-    </div>
-    <div class="methode-card">
-      <div class="methode-num">02</div>
-      <h4>Découpage en lots</h4>
-      <p>Le déploiement en 3 lots de ~33 postes chacun a limité les risques : en cas d'erreur sur l'image, seul un lot était impacté. Chaque lot était validé avant de passer au suivant.</p>
-    </div>
-    <div class="methode-card">
-      <div class="methode-num">03</div>
-      <h4>Suivi &amp; traçabilité</h4>
-      <p>Chaque poste traité était mis à jour dans GLPI (outil de gestion de parc). Un tableau de bord permettait de suivre l'avancement en temps réel et de signaler les anomalies.</p>
-    </div>
-    <div class="methode-card">
-      <div class="methode-num">04</div>
-      <h4>Tests &amp; validation</h4>
-      <p>Une checklist de conformité était appliquée à chaque poste déployé : connexion AD, application des GPO, accès aux partages réseau, fonctionnement des imprimantes.</p>
-    </div>
-    <div class="methode-card">
-      <div class="methode-num">05</div>
-      <h4>Communication</h4>
-      <p>Les agents étaient informés à l'avance de l'intervention sur leur poste. Un support de premier niveau était assuré pendant et après le déploiement pour accompagner les utilisateurs.</p>
-    </div>
-    <div class="methode-card">
-      <div class="methode-num">06</div>
-      <h4>Documentation</h4>
-      <p>Une procédure de masterisation a été rédigée à l'issue du projet, permettant à l'équipe informatique de reproduire l'opération de façon autonome lors de futurs déploiements.</p>
+  <!-- OUTILS ET PREUVES -->
+  <div style="margin-top:48px;">
+    <h3 style="font-family:'Syne',sans-serif; font-weight:700; color:#fff; font-size:1.1rem; margin-bottom:24px; display:flex; align-items:center; gap:8px;">
+      <span style="font-size:1.4rem;">🛠️</span> Outils et Preuves de la Veille
+    </h3>
+    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="https://docs.google.com/document/d/1ITIQuf7cARZpHWN3ThR2Hh-IxUI5mNjCIpNCrAp20wM/edit?usp=sharing" target="_blank" class="project-doc-link">
+          <span>📄</span>
+          Consulter mes sources de veille
+        </a>
+        <a href="img_stage2/preuve_veille.pdf" target="_blank" class="project-doc-link">
+          <span>🔔</span>
+          Voir mes alertes (Google Alerts)
+        </a>
     </div>
   </div>
 </section>
@@ -995,7 +997,7 @@
 
 <!-- COMPÉTENCES -->
 <section id="competences" class="fade-in">
-  <div class="section-label">05 — Compétences</div>
+  <div class="section-label">07 — Compétences</div>
   <h2 class="section-title">Niveaux de maîtrise</h2>
   <p class="section-sub">Compétences acquises lors de ma formation et de mes stages, évaluées en contexte professionnel réel.</p>
   <div class="skills-grid">
@@ -1032,26 +1034,9 @@
 
 <div class="divider"></div>
 
-<!-- ÉPREUVE E5 -->
-<section id="epreuve" class="fade-in">
-  <div class="section-label">06 — Épreuve E5</div>
-  <h2 class="section-title">Bilan de compétences</h2>
-  <p class="section-sub">Synthèse du parcours professionnel présentée lors de l'épreuve E5 du BTS SIO — Session 2026.</p>
-  <div class="e5-grid fade-in" style="margin-bottom:48px">
-    <div class="e5-card"><span class="e5-num">2</span><span class="e5-label">Années de formation BTS SIO SISR</span></div>
-    <div class="e5-card"><span class="e5-num">2</span><span class="e5-label">Stages en entreprise réalisés</span></div>
-    <div class="e5-card"><span class="e5-num">3</span><span class="e5-label">Projets BTS techniques majeurs</span></div>
-    <div class="e5-card"><span class="e5-num">100</span><span class="e5-label">Postes masterisés en stage</span></div>
-    <div class="e5-card"><span class="e5-num">10+</span><span class="e5-label">Compétences SISR maîtrisées</span></div>
-    <div class="e5-card"><span class="e5-num">2026</span><span class="e5-label">Session de présentation</span></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- CONTACT -->
 <section id="contact" class="fade-in">
-  <div class="section-label">07 — Contact</div>
+  <div class="section-label">08 — Contact</div>
   <div class="contact-wrapper">
     <div class="contact-info">
       <h2>Me contacter</h2>
@@ -1066,26 +1051,33 @@
           linkedin.com/in/david-ayim-15275b3ba
         </a>
         <a href="#" class="contact-link"><span class="contact-link-icon">📍</span>Région Île-de-France</a>
-        <a href="#" class="contact-link"><span class="contact-link-icon">🎓</span>BTS SIO SISR — Session 2026</a>
       </div>
     </div>
-    <div class="epreuve-box fade-in">
-      <h3>📋 Épreuve E5 — Ce portfolio présente</h3>
-      <ul>
-        <li>Mon parcours complet en BTS SIO option SISR (2024–2026)</li>
-        <li>Stage 1 : Lycée Georges Brassens, Évry — reconfiguration réseau</li>
-        <li>Stage 2 : Mairie de Champs-sur-Marne — administration SI &amp; support</li>
-        <li>Tableau de synthèse officiel intégré au portfolio (PDF téléchargeable)</li>
-        <li>Formation : Windows Server 2022, Xibo CMS, Stormshield, site Sanaya BIO, veille techno</li>
-        <li>Stage 1 : Lycée Georges Brassens — déploiement routeurs &amp; isolation DHCP</li>
-        <li>Stage 2 : Mairie de Champs-sur-Marne — masterisation 100 postes (Gantt)</li>
-        <li>Stage 2 : Support utilisateurs N1/N2 &amp; gestion de tickets GLPI</li>
-        <li>Stage 2 : Déploiement et configuration d'équipements réseau</li>
-        <li>6 compétences du référentiel BTS SIO couvertes et documentées</li>
-      </ul>
+    <div class="fade-in">
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Nom & Prénom</label>
+          <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Objet / Sujet</label>
+          <input type="text" id="subject" name="subject" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top:8px;">Envoyer le message</button>
+      </form>
     </div>
   </div>
 </section>
+
+<!-- MODAL POUR IMAGES -->
+<div id="imageModal" class="modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
 
 <footer>
   <div class="footer-left">© 2026 David AYIM · BTS SIO SISR · Portfolio E5</div>
@@ -1097,9 +1089,32 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  document.querySelectorAll('.about-grid,.projects-grid,.skills-grid,.e5-grid,.methode-grid,.mast-stats').forEach(grid => {
+  document.querySelectorAll('.about-grid,.projects-grid,.skills-grid,.methode-grid,.mast-stats').forEach(grid => {
     grid.querySelectorAll('.fade-in').forEach((card, i) => { card.style.transitionDelay = i * 80 + 'ms'; });
   });
+
+  // --- SCRIPT MODAL IMAGES ---
+  const modal = document.getElementById("imageModal");
+  if (modal) {
+    const modalImg = document.getElementById("modalImage");
+    const galleryImages = document.querySelectorAll(".project-gallery img");
+    const closeModal = document.querySelector(".close-modal");
+
+    galleryImages.forEach(img => {
+      img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      }
+    });
+
+    if (closeModal) {
+      closeModal.onclick = function() { modal.style.display = "none"; }
+    }
+
+    modal.onclick = function(e) {
+      if (e.target !== modalImg) { modal.style.display = "none"; }
+    }
+  }
 </script>
 </body>
 </html>
